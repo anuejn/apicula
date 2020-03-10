@@ -1,6 +1,7 @@
 FROM python:3
 
 WORKDIR /usr/src/gowin
+RUN mkdir -p /root/Documents/gowinsemi/
 RUN curl https://www.gowinsemi.com/upload/database_doc/359/document/5cf8eb7f250cf.xlsx > "/root/Documents/gowinsemi/GW1NR-9 Pinout.xlsx"
 RUN curl https://www.gowinsemi.com/upload/database_doc/186/document/5e1ff868b7434.xlsx > "/root/Documents/gowinsemi/GW1N-1 Pinout.xlsx"
 RUN curl http://cdn.gowinsemi.com.cn/Gowin_V1.9.3.01Beta_linux.tar.gz > gowin.tgz
