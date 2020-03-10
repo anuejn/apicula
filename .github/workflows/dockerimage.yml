@@ -1,18 +1,18 @@
 name: Docker Image CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+on: [push, pull_request]
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    container:
+          image: 'Dockerfile'
+    env: 
+      DEVICE: GW1N-1
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Run database generation
+      run: python dat19_h4x.py; python tiled_fuzzer.py
+    - uses: actions/upload-artifact@master
+      with:
+        name: $DEVICE.json
+        path: $DEVICE.json
